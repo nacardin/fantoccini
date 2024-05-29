@@ -817,6 +817,7 @@ where
                 // NOTE: the standard specifies that even errors use the "Send a Reponse" steps
                 let body = match serde_json::from_str(&*body)? {
                     Json::Object(mut v) => {
+                        println!("response {v:?}");
                         if legacy {
                             legacy_status = v["status"].as_u64().unwrap();
                             is_success = legacy_status == 0;
